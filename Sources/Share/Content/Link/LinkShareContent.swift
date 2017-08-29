@@ -118,9 +118,10 @@ extension LinkShareContent: Equatable {
 extension LinkShareContent: SDKBridgedContent {
   internal var sdkSharingContentRepresentation: FBSDKSharingContent {
     let content = FBSDKShareLinkContent()
-    content.contentDescription = self.description
-    content.contentTitle = self.title
-    content.imageURL = self.imageURL
+    // The following 3 lines cause a compile error because the properties are now read-only.
+    // content.contentDescription = self.description
+    // content.contentTitle = self.title
+    // content.imageURL = self.imageURL
     content.quote = self.quote
     content.contentURL = self.url
     content.hashtag = self.hashtag?.sdkHashtagRepresentation
